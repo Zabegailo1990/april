@@ -9,13 +9,16 @@ export const useCatalogStore = defineStore('catalog', () => {
     const filteredGoods = ref<Product[]>([]);
     const currentPage = ref<number>(1);
     const goodsPerPage = ref<number>(10);
+    const isLoading = ref<boolean>(false);
 
     // Получение данных
     const fetchGoods = async (): Promise<void> => {
+        isLoading.value = false;
         try {
             const { data } = await axios.get<Product[]>(BASE_URL);
             goods.value = data;
             filteredGoods.value = goods.value;
+            isLoading.value = true;
         } catch (error) {
             console.error('Ошибка при получении данных ', error);
         }
@@ -53,13 +56,14 @@ export const useCatalogStore = defineStore('catalog', () => {
     };
 
     return {
+        fetchGoods,
+        isLoading,
         goods,
         filteredGoods,
         currentPage,
         goodsPerPage,
         paginatedGoods,
         totalPages,
-        fetchGoods,
         filterGoods,
         setCurrentPage
     };

@@ -52,7 +52,8 @@ const goToProduct = (id: number): void => {
                 </Button>
             </div>
         </div>
-        <div :class="['catalog__inner', {'catalog__inner--list' : viewMode === 'list'}]">
+        <div class="catalog__loading" v-if="!store.isLoading">Loading...</div>
+        <div :class="['catalog__inner', {'catalog__inner--list' : viewMode === 'list'}]" v-if="store.isLoading">
             <Button
                 v-for="card in store.paginatedGoods"
                 :key="card.id"
@@ -70,7 +71,6 @@ const goToProduct = (id: number): void => {
         </div>
         <Pagination 
             :count="store.totalPages"
-            :active-number="1"
             @getCurentNumber="store.setCurrentPage"
         />
     </div>

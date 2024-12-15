@@ -11,7 +11,9 @@ const product = ref<Product | null>(null);
 
 onMounted(async () => {
     const productId = Number(route.params.id);
+    store.isLoading = false;
     if (!store.goods.length) await store.fetchGoods();
+    store.isLoading = true;
     product.value = store.goods.find(item => item.id === productId) || null;
 });
 
@@ -19,7 +21,8 @@ onMounted(async () => {
 
 <template>
     <div class="product">
-        <div class="product__inner">
+        <div class="product__loading" v-if="!store.isLoading">Loading...</div>
+        <div class="product__inner" v-if="store.isLoading">
             <div class="product__id">ID {{ product?.id }}</div>
             <div class="product__picture">
                 <img :src="product?.image" class="product__img">

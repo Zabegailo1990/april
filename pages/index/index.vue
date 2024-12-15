@@ -9,10 +9,6 @@ import Icon from '../../components/Icon/index.vue'
 import Search from '../../components/Search/index.vue';
 import Pagination from '../../components/Pagination/index.vue';
 
-definePageMeta({
-  layout: 'default',
-});
-
 const store = useCatalogStore();
 const viewMode = ref<'grid' | 'list'>('grid');
 const router = useRouter();

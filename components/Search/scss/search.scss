@@ -1,0 +1,19 @@
+.search{
+    display: flex;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+
+    &--active{
+        border: 2px solid #245bd3;
+    }
+
+    &__button{
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+    }
+}

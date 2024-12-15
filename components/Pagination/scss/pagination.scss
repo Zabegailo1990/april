@@ -1,0 +1,20 @@
+.pagination{
+    &__button{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: #fff;
+        color: #444444;
+        font-weight: 600;
+        border: 2px solid #cac8c8;
+        transition: all .3s;
+
+        &:not(:last-child){
+            margin-right: 10px;
+        }
+
+        &--active{
+            background-color: rgb(236, 218, 51);
+        }
+    }
+}

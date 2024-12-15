@@ -44,7 +44,7 @@ const goToProduct = (id: number): void => {
             />
             <div class="catalog__mode">
                 <Button 
-                    :class="['catalog__button', {'catalog__button--active' : viewMode === 'list'}]"
+                    :class="['catalog__button', {'catalog__button--active' : viewMode === button}]"
                     v-for="(button, index) in buttons"
                     :key="index"
                     @click="changeViewMode(button)"

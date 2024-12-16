@@ -10,7 +10,7 @@ import Search from '../../components/Search/index.vue';
 import Pagination from '../../components/Pagination/index.vue';
 
 const store = useCatalogStore();
-const viewMode = ref<'grid' | 'list'>('grid');
+const viewMode = useState<'grid' | 'list'>('viewMode', () => 'grid');
 const router = useRouter();
 
 onMounted(() => store.fetchGoods());
@@ -70,6 +70,7 @@ const goToProduct = (id: number): void => {
             </Button>
         </div>
         <Pagination 
+            v-if="store.isLoading"
             :count="store.totalPages"
             @getCurentNumber="store.setCurrentPage"
         />

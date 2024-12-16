@@ -1,7 +1,6 @@
 <script setup lang="ts">
 
 import { useCatalogStore } from '../../stores/catalogStore';
-import { ref } from 'vue';
 import { useRouter } from '#app';
 import Card from '../../components/Card/index.vue';
 import Button from '../../components/Button/index.vue';
@@ -15,10 +14,8 @@ const router = useRouter();
 
 onMounted(() => store.fetchGoods());
 
-const changeViewMode = (mode: 'grid' | 'list'): void => {
-    if (typeof mode === 'string'){
-        viewMode.value = mode
-    }
+const changeViewMode = (mode: 'grid' | 'list'): void => { 
+    viewMode.value = mode;
 };
 
 const buttons: ('grid' | 'list')[] = ['list', 'grid'];

@@ -10,10 +10,10 @@ const props = withDefaults(defineProps<{
     activeNumber: 1,
 });
 
-const currentNumber = ref<number>(props.activeNumber);
+const currentNumber = useState<number>('currentNumber', () => props.activeNumber || 1);
 
 const emit = defineEmits<{
-    (event: 'getCurentNumber', currentNumber: number): void
+    (event: 'getCurentNumber', currentNumber: number): void;
 }>();
 
 const handleClick = (number: number): void => {
